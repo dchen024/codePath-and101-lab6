@@ -3,9 +3,6 @@ package com.driuft.random_pets_starter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.ImageView
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codepath.asynchttpclient.AsyncHttpClient
@@ -20,10 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getDogImageURL()
+
 
         rvPets = findViewById(R.id.pet_list)
         petList = mutableListOf()
+        getDogImageURL()
 
         val adapter = PetAdapter(petList)
         rvPets.adapter = adapter
@@ -34,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun getDogImageURL() {
         val client = AsyncHttpClient()
 
-        client["https://dog.ceo/api/breeds/image/random", object : JsonHttpResponseHandler() {
+        client["https://dog.ceo/api/breeds/image/random/20 ", object : JsonHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Headers, json: JsonHttpResponseHandler.JSON) {
                 Log.d("Dog Success", "$json")
 
@@ -43,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 for(i in 0 until petImageArray.length()){
                     petList.add(petImageArray.getString(i))
                 }
+                Log.d("petList","petList $petList")
 
             }
 

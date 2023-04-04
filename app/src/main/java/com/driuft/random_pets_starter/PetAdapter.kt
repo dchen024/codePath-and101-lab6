@@ -1,5 +1,6 @@
 package com.driuft.random_pets_starter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,13 +23,14 @@ class PetAdapter(private val petList: MutableList<String>): RecyclerView.Adapter
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.pet_item, parent, false)
-
+        Log.d("create", "petList ${petList}")
         return ViewHolder(view)
     }
 
     override fun getItemCount() = petList.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         Glide.with(holder.itemView)
             .load(petList[position])
             .centerCrop()
