@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        getDogImageURL()
-
         rvPets = findViewById(R.id.pet_list)
         petList = mutableListOf()
+
+        getDogImageURL()
 
         val adapter = PetAdapter(petList)
         rvPets.adapter = adapter
