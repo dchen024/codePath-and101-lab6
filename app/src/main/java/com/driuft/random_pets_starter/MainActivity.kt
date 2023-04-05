@@ -17,15 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         rvPets = findViewById(R.id.pet_list)
         petList = mutableListOf()
         getDogImageURL()
 
-        val adapter = PetAdapter(petList)
-        rvPets.adapter = adapter
-        rvPets.layoutManager = LinearLayoutManager(this@MainActivity)
+
     }
 
 
@@ -42,6 +38,10 @@ class MainActivity : AppCompatActivity() {
                     petList.add(petImageArray.getString(i))
                 }
                 Log.d("petList","petList $petList")
+
+                val adapter = PetAdapter(petList)
+                rvPets.adapter = adapter
+                rvPets.layoutManager = LinearLayoutManager(this@MainActivity)
 
             }
 
